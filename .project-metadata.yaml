@@ -1,0 +1,45 @@
+name: AI Text Summarization with Amazon Bedrock
+description: |
+  This AMP demonstrates you can use Amazon Bedrock's API for LLM models to perform tasks
+author: Cloudera Inc.
+specification_version: 1.0
+prototype_version: 1.0
+date: "2023-09-28"
+
+environment_variables:
+  AWS_DEFAULT_REGION:
+    default: "us-west-2"
+    description: >-
+      AWS region. Check the Amazon website for information about roles
+  AWS_ACCESS_KEY_ID:
+    default: "aws_key"
+    description: >-
+      AWS key ID
+  AWS_SECRET_ACCESS_KEY:
+    default: "aws_secret_key"
+    description: >-
+      AWS Secret Key
+
+runtimes:
+  - editor: PBJ Workbench
+    kernel: Python 3.9
+    edition: Nvidia GPU
+    
+tasks:
+  - type: run_session
+    name: Install Dependencies
+    script: amp_1_session-install-deps/setup.py
+    short_summary: Install Dependencies
+    kernel: python3
+    cpu: 2
+    memory: 4
+    
+  - type: start_application
+    name: CML Text Summarization with Amazon Bedrock
+    subdomain: cml-task
+    script: amp_2_app/bedrock-app.py
+    long_summary: This application requires an AWS account to be configured
+    cpu: 2
+    memory: 8
+    environment_variables:
+      TASK_TYPE: START_APPLICATION
