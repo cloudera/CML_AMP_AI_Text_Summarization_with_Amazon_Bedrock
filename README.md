@@ -13,7 +13,7 @@ When calling each of these models using the API, it is important to note the for
 
 ![Amp Screenshot](images/titan-example.png)
 
-The prompt given to the chosen model is also customizable. For example, an engineered prompt to provide a very simple and understandable summarization might look like this:
+The instruction prompt is also customizable to instruct the called model to perform a different text generation task. For example, an engineered prompt to provide a very simple and understandable summarization might look like this:
 
 *Please explain CML at a 5 year old level.*
 ````
@@ -27,7 +27,7 @@ You must have an AWS account with access to Bedrock and the following environmen
 - **AWS_ACCESS_KEY_ID**
 - **AWS_SECRET_ACCESS_KEY**
 
-If you would like to use a role, you can set up BEDROCK_ASSUME_ROLE
+If you would like to use a federated role, you can set up BEDROCK_ASSUME_ROLE in the Project Environment variables after AMP launch. (Remember to restart the configured CML Application as well.)
 
 ## AMP Requirements
 
