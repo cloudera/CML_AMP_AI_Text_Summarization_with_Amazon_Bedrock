@@ -29,6 +29,29 @@ You must have an AWS account with access to Bedrock and the following environmen
 
 If you would like to use a federated role, you can set up BEDROCK_ASSUME_ROLE in the Project Environment variables after AMP launch. (Remember to restart the configured CML Application as well.)
 
+### Enable AWS IAM permissions for Bedrock
+
+The AWS identity you set here must have sufficient [AWS IAM permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) to call the Amazon Bedrock service.
+
+For example, To grant full bedrock access to your identity, you can:
+
+- Open the [AWS IAM Console](https://us-east-1.console.aws.amazon.com/iam/home?#)
+- Find your [Role](https://us-east-1.console.aws.amazon.com/iamv2/home?#/roles)
+- Select *Add Permissions > Create Inline Policy* to attach new inline permissions, open the *JSON* editor and paste in the below example policy:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BedrockFullAccess",
+            "Effect": "Allow",
+            "Action": ["bedrock:*"],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 ## AMP Requirements
 
 ### CPU
