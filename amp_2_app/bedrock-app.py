@@ -30,8 +30,6 @@ def prompt_construction(modelId, instruction="[instruction]", prompt="[input_tex
   elif modelId == 'anthropic.claude-v2':
     full_prompt = """Human: """ + instruction + """\n<text>""" + prompt + """</text>
 Assistant:"""
-  else:
-    full_prompt = 'Please select a model'
   
   return full_prompt
 
@@ -44,7 +42,7 @@ def json_format(modelId, tokens, temperature, top_p, full_prompt="[input text]")
                        "stopSequences":[],
                        "temperature":temperature,
                        "topP":top_p}})
-  else:
+  elif modelId == 'anthropic.claude-v2':
     body = json.dumps({"prompt": full_prompt,
                  "max_tokens_to_sample":tokens,
                  "temperature":temperature,
@@ -63,7 +61,7 @@ def display_format(modelId):
                        "stopSequences":[],
                        "temperature":"[temperature]",
                        "topP":"[top_p]"}})
-  else:
+  elif modelId == 'anthropic.claude-v2':
     body = json.dumps({"prompt": "[input_text]",
                  "max_tokens_to_sample":"[max_tokens]",
                  "temperature":"[temperature]",
@@ -88,7 +86,7 @@ def summarize(modelId, input_text, instruction_text, max_tokens, temperature, to
   # Extract the output from the API response for the corresponding model
   if modelId == 'amazon.titan-tg1-large':
     result = response_body.get('results')[0].get('outputText')
-  else:
+  elif modelId == 'anthropic.claude-v2':
     result = response_body.get('completion')
 
   return result.strip('\n')
