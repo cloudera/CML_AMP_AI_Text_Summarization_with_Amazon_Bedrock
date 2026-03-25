@@ -1,4 +1,4 @@
-awscli==1.29.57
-boto3==1.28.57
-botocore==1.31.57
-gradio==3.44.4
+awscli==1.44.65
+boto3==1.42.75
+botocore==1.42.75
+gradio==6.10.0

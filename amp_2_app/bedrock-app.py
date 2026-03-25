@@ -17,7 +17,7 @@ def example_lookup(text):
 example_instruction = "Please provide a summary of the following text. Do not add any information that is not mentioned in the text below."
 
 def clear_out():
-  cleared_tuple = (gr.Textbox.update(value=""), gr.Textbox.update(value=""), gr.Textbox.update(value=""), gr.Textbox.update(value=""))
+  cleared_tuple = ("", "", "", "")
   return cleared_tuple
 
 # List of LLM models to use for text summarization
